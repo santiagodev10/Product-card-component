@@ -16,13 +16,14 @@ class CardComponent extends LitElement {
     static styles = css`
         /* Usa :host para aplicar estilos al elemento personalizado en sí */
         :host {
+            --primary-color: #5a6cb2;
+            --secondary-color: #5161a0;
             margin: 0;
             padding: 0;
             font-size: 62.5%; /* Base para rem */
             box-sizing: border-box; /* Asegura que el padding y el border se incluyan en el ancho y alto total */
             display: inline-block; /* Los elementos personalizados son inline por defecto */
             border-radius: 8px;
-            overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             // max-width: 300px;
             margin: 1rem;
@@ -42,7 +43,7 @@ class CardComponent extends LitElement {
             position: relative;
             text-align: center;
             padding-bottom: 10px; /* Espacio para la marca */
-            background-color: #5a6cb2;
+            background-color: var(--primary-color);
         }
 
         .brand-container--brand { /* Nombre de la marca */
@@ -51,7 +52,7 @@ class CardComponent extends LitElement {
             border-radius: 4px;
             font-size: 100px;
             font-weight: 800;
-            color: #5161a0;
+            color: var(--secondary-color);
             z-index: 1;
         }
 
@@ -105,7 +106,7 @@ class CardComponent extends LitElement {
 
         .details-container--product-description {
             margin: 0;
-            font-size: 0.8rem;
+            font-size: 1rem;
             color: #444444;
         }
 
@@ -123,7 +124,7 @@ class CardComponent extends LitElement {
         }
 
         .price-info--price-button {
-            background-color: #5a6cb2;
+            background-color: var(--primary-color);
             color: white;
             padding: 8px 15px;
             border-radius: 2rem;
@@ -134,6 +135,67 @@ class CardComponent extends LitElement {
 
         .price-info--price-button:hover {
             background-color: #0056b3;
+        }
+
+        @media (min-width: 1024px) {
+            article.card-component {
+                position: relative;
+                grid-template-rows: none;
+                grid-template-columns: 1fr 1fr;
+                max-width: 60rem;
+                min-height: 38rem;
+            }
+
+            .brand-container--image-container {
+                max-width: 48rem;
+                top: 8rem;
+                right: 24rem;
+                transform: rotate(-30deg);
+                z-index: 1;
+            }
+
+            .card-component--brand-container {
+                position: static;
+            }
+
+            .card-component--details-container {
+                justify-content: space-evenly;
+                padding: 3rem;
+            }
+            
+            .brand-container--brand {
+                font-size: 8rem;
+                z-index: 0;
+            }
+
+            .brand-container--image-container img {
+                max-width: none;
+            }
+            
+            .text-info--product-title {
+                display: block;
+                margin: 0;
+                margin-bottom: 1rem;
+                font-size: 2.8rem;
+            }
+
+            .text-info--product-collection {
+                display: block;
+                margin: 0;
+                font-size: 1.4rem;
+            }
+
+            .details-container--product-description {
+                margin-left: 3rem;
+            }
+
+            .price-info--price {
+                font-size: 2.6rem;
+            }
+
+            .price-info--price-button {
+                padding: 12px 20px;
+                font-size: 1.4rem;
         }
     `;
 
